@@ -19,10 +19,23 @@ class Timer extends React.Component {
   }
 
   render() {
+
+    var time = new Date(this.props.duration * 1000).toISOString();
+    var formattedTime;
+
+    if (this.props.duration < 60) {
+      formattedTime = time.substring(15, 19);
+    } else if (this.props.duration < 3600) {
+      formattedTime = time.substring(14, 19);
+    } else {
+      formattedTime = time.substring(11, 19);
+    }
+
+
     return (
       <div className={`timer ${this.props.isOn ? "" : "off"}`}>
         <p className="title">{this.props.name ? this.props.name : 'untitled timer'}</p>
-        <p className="time">{new Date(this.props.duration * 1000).toISOString().substr(11, 8)}</p>
+        <time className="time">{formattedTime}</time>
         <button timer-id={this.props.id} onClick={this.handleDelete}>✕</button>
         <audio id={`${this.props.id}-alarm`}>
           <source src={ogg} type="audio/ogg" />

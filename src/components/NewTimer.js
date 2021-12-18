@@ -20,7 +20,7 @@ export default class NewTimer extends React.Component {
   // when form button is clicked
   handleSubmit = (e) => {
     e.preventDefault()
-    // get time in seconds
+    // get time in seconds (if Number evaluates to true)
     const total = Number(this.state.hours * 3600) + Number(this.state.minutes * 60) + Number(this.state.seconds);
     // if there is any amount of time
     if (total) {
