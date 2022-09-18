@@ -1,0 +1,147 @@
+$sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+$serif: 'Times new roman';
+$lightGray: #f5f5f5;
+
+#top.compact {
+  #newTimer {
+    form { padding: 40px 0 50px 0; }
+  }
+}
+
+#top {
+  #newTimer {
+    form {
+      width: fit-content;
+      margin: 0 auto;
+      padding: 120px 0 120px 0;
+      display: flex;
+      align-items: flex-end;
+      transition: all 300ms;
+
+      input, button {
+        height: 50px;
+      }
+
+      .numberInputsContainer {
+        display: flex;
+        align-items: flex-end;
+      }
+
+      div.input-group {
+        display: flex;
+        flex-direction: column;
+
+        label {
+          margin: 0 0 8px 0;
+          font-family: $sans-serif;
+        }
+
+        input {
+          background: $lightGray;
+          border: 1px solid #00000000;
+          padding: 0;
+
+          &#timerName {
+            width: 280px;
+            margin-right: 44px;
+            padding: 0 0 0 15px;
+            font-size: 32px;
+            font-family: $serif;
+          }
+
+          &[type=number] {
+            width: 52px;
+            padding: 0 0 0 18px;
+            font-size: 28px;
+            font-family: $sans-serif;
+          }
+
+          &:focus {
+            outline: none;
+            border: 1px solid black;
+          }
+        }
+
+        ::placeholder {
+          color: #BCBCBC;
+          font-weight: normal;
+        }
+      }
+
+      div.colon {
+        margin: 0 6px 12px 6px;
+        font-size: 28px;
+      }
+
+      button {
+        padding: 0 20px;
+        margin: 0 0 0 44px;
+        background: none;
+        border: 1px solid black;
+        cursor: pointer;
+        font-size: 22px;
+
+        &.disabled {
+          opacity: 0.25;
+          cursor: default;
+        }
+      }
+    }
+
+    #showForm {
+      display: none;
+      width: calc(100% - 15px);
+      height: 50px;
+      background: none;
+      border: 1px solid black;
+      cursor: pointer;
+      font-size: 22px;
+      margin: 20px 0;
+    }
+  }
+}
+
+/************======== S M A L L  H E A D E R ========************/
+
+@media (max-width: 900px) {
+
+  #top {
+    #newTimer {
+      &.hideForMobile {
+        form { display: none; }
+        #showForm { display: block; }
+      }
+      form {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 0;
+        padding: 40px 0 40px 0;
+
+        > div.input-group {
+          &:first-child { margin-bottom: 20px; }
+
+          input {
+            &#timerName {
+              width: calc(100% - 15px);
+              font-size: 26px;
+            }
+          }
+        }
+
+        button {
+          width: calc(100% - 15px);
+          padding: 0;
+          margin: 20px 0 0 0;
+        }
+      }
+
+    }
+
+    &.compact {
+      #newTimer {
+        form { padding: 20px 0 30px 0; }
+      }
+    }
+  }
+}
